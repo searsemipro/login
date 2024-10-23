@@ -17,6 +17,16 @@ class _MyLoginState extends State<MyLogin> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent, // พื้นหลังโปร่งใส
+          elevation: 0, // ไม่มีเงา
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black), // ไอคอนย้อนกลับ
+            onPressed: () {
+              Navigator.pushNamed(context, 'home');
+            },
+          ),
+        ),
         body: Stack(
           children: [
             Container(),
@@ -39,6 +49,7 @@ class _MyLoginState extends State<MyLogin> {
                       margin: EdgeInsets.only(left: 35, right: 35),
                       child: Column(
                         children: [
+                          // ช่องกรอกอีเมล
                           TextField(
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -52,6 +63,7 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(
                             height: 30,
                           ),
+                          // ช่องกรอกรหัสผ่าน
                           TextField(
                             style: TextStyle(),
                             obscureText: true,
@@ -109,16 +121,6 @@ class _MyLoginState extends State<MyLogin> {
                                 ),
                                 style: ButtonStyle(),
                               ),
-                              // TextButton(
-                              //     onPressed: () {},
-                              //     child: Text(
-                              //       'Forgot Password',
-                              //       style: TextStyle(
-                              //         decoration: TextDecoration.none,
-                              //         color: Color.fromARGB(255, 0, 0, 0),
-                              //         fontSize: 18,
-                              //       ),
-                              //     )),
                             ],
                           )
                         ],
