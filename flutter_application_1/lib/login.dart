@@ -82,7 +82,7 @@ class _MyLoginState extends State<MyLogin> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign in',
+                                'LOGIN',
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 255, 65, 65),
                                     fontSize: 27,
@@ -112,7 +112,7 @@ class _MyLoginState extends State<MyLogin> {
                                   Navigator.pushNamed(context, 'register');
                                 },
                                 child: Text(
-                                  'Sign Up',
+                                  'REGISTER',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.none,
