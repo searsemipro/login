@@ -24,9 +24,9 @@ class _MyWidgetState extends State<MyHome> {
                 mainAxisSize: MainAxisSize.min, // ทำให้ Column มีขนาดพอดี
                 children: [
                   ElevatedButton(
-                    child: Text("LOGIN"),
+                    child: Text("Sign Up"),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'login');
+                      Navigator.pushNamed(context, 'register');
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(20),
@@ -41,9 +41,9 @@ class _MyWidgetState extends State<MyHome> {
                   ),
                   SizedBox(height: 20), // เพิ่มระยะห่างด้านล่างปุ่ม
                   ElevatedButton(
-                    child: Text("REGISTER"),
+                    child: Text("Log In"),
                     onPressed: () {
-                      Navigator.pushNamed(context, 'register');
+                      Navigator.pushNamed(context, 'login');
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.all(20),
@@ -57,7 +57,7 @@ class _MyWidgetState extends State<MyHome> {
                           Color.fromARGB(255, 255, 65, 65), // สีของฟอนต์
                       side: BorderSide(
                         color: Color.fromARGB(255, 255, 65, 65), // สีขอบ
-                        width: 2, // ความกว้างของขอบ
+                        width: 1, // ความกว้างของขอบ
                       ),
                     ),
                   ),

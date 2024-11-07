@@ -134,7 +134,7 @@ class _MyRegisterState extends State<MyRegister> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'REGISTER',
+                                'Sign Up',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 27,
@@ -167,7 +167,7 @@ class _MyRegisterState extends State<MyRegister> {
                                   Navigator.pushNamed(context, 'login');
                                 },
                                 child: Text(
-                                  'LOGIN',
+                                  'Sign In',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.none,

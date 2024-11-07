@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-class MyLogin extends StatefulWidget {
-  const MyLogin({Key? key}) : super(key: key);
+class MyForgotPassword extends StatefulWidget {
+  const MyForgotPassword({Key? key}) : super(key: key);
 
   @override
-  _MyLoginState createState() => _MyLoginState();
+  _MyForgotPasswordState createState() => _MyForgotPasswordState();
 }
 
-class _MyLoginState extends State<MyLogin> {
+class _MyForgotPasswordState extends State<MyForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/login.png'), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage(''), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -23,7 +22,7 @@ class _MyLoginState extends State<MyLogin> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () {
-              Navigator.pushNamed(context, 'home');
+              Navigator.pushNamed(context, 'login');
             },
           ),
         ),
@@ -33,7 +32,7 @@ class _MyLoginState extends State<MyLogin> {
             Container(
               padding: EdgeInsets.only(left: 35, top: 130),
               child: Text(
-                'Welcome\nBack',
+                'Reset\nYour password',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 33,
@@ -43,45 +42,64 @@ class _MyLoginState extends State<MyLogin> {
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.5,
+                  top: MediaQuery.of(context).size.height *
+                      0.35, // Adjusted padding to move fields up
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 35, right: 35),
+                      margin: EdgeInsets.symmetric(horizontal: 35),
                       child: Column(
                         children: [
+                          // Current Password Field
                           TextField(
                             style: TextStyle(color: Colors.black),
+                            obscureText: true,
                             decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
                               filled: true,
-                              hintText: "Email",
+                              hintText: "Current password",
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
                           ),
-                          SizedBox(height: 30),
+                          SizedBox(height: 20),
+                          // New Password Field
                           TextField(
-                            style: TextStyle(),
+                            style: TextStyle(color: Colors.black),
                             obscureText: true,
                             decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
                               filled: true,
-                              hintText: "Password",
+                              hintText: "New password",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          // Confirm Password Field
+                          TextField(
+                            style: TextStyle(color: Colors.black),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Confirm password",
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
                           ),
                           SizedBox(height: 40),
+                          // Confirm Button
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Sign In',
+                                'Confirm',
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 255, 65, 65),
                                   fontSize: 27,
@@ -95,40 +113,9 @@ class _MyLoginState extends State<MyLogin> {
                                 child: IconButton(
                                   color: Colors.white,
                                   onPressed: () {
-                                    // Add login action here
+                                    // Add confirm action here
                                   },
                                   icon: Icon(Icons.arrow_forward),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 40),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, 'register');
-                                },
-                                child: Text(
-                                  'Sign Up',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, 'forgot');
-                                },
-                                child: Text(
-                                  'Forgot password',
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 18,
-                                  ),
                                 ),
                               ),
                             ],
