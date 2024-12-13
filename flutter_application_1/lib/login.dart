@@ -1,4 +1,6 @@
+import 'dart:convert'; // จำเป็นสำหรับ jsonDecode
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http; // จำเป็นสำหรับการทำงานกับ HTTP
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -8,6 +10,52 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Future<void> handleLogin() async {
+    final url = Uri.parse('http://127.0.0.1:8000/api/login/'); // URL API
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'email': emailController.text,
+          'password': passwordController.text,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data['status'] == 'success') {
+          Navigator.pushNamed(context, 'home'); // ไปที่หน้า Home
+        } else {
+          _showErrorDialog(data['message'] ?? 'Login failed');
+        }
+      } else {
+        _showErrorDialog('Error: ${response.statusCode}');
+      }
+    } catch (e) {
+      _showErrorDialog('An error occurred: $e');
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('Login Failed'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            child: Text('OK'),
+            onPressed: () => Navigator.of(ctx).pop(),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,6 +101,7 @@ class _MyLoginState extends State<MyLogin> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: emailController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
@@ -65,7 +114,7 @@ class _MyLoginState extends State<MyLogin> {
                           ),
                           SizedBox(height: 30),
                           TextField(
-                            style: TextStyle(),
+                            controller: passwordController,
                             obscureText: true,
                             decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
@@ -94,8 +143,8 @@ class _MyLoginState extends State<MyLogin> {
                                     Color.fromARGB(255, 255, 65, 65),
                                 child: IconButton(
                                   color: Colors.white,
-                                  onPressed: () {
-                                    // Add login action here
+                                  onPressed: () async {
+                                    await handleLogin(); // เรียกฟังก์ชันล็อกอิน
                                   },
                                   icon: Icon(Icons.arrow_forward),
                                 ),
